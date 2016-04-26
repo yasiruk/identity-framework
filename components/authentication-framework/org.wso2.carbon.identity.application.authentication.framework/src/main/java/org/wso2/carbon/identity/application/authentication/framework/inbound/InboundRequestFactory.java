@@ -55,9 +55,12 @@ public class InboundRequestFactory {
         }
         builder.setParameters(request.getParameterMap());
         Cookie[] cookies = request.getCookies();
-        for(Cookie cookie:cookies){
-            builder.addCookie(cookie.getName(), cookie);
+        if(cookies != null) {
+            for(Cookie cookie:cookies) {
+                builder.addCookie(cookie.getName(), cookie);
+            }
         }
+
         return builder.build();
     }
 
